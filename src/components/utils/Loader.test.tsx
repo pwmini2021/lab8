@@ -9,12 +9,12 @@ findBy - async, finds or throws
 */
 
 describe('Loader label test', () => {
-    test('Loader should present default loading text when loading', () => {
+    test('Loader should present default label when loading', () => {
         render(<Loader loading={true}/>);
         expect(screen.getByText('Loading...')).toBeTruthy();
     });
 
-    test('Loader shouldn\'t present default loading text when not loading', () => {
+    test('Loader shouldn\'t present default label when not loading', () => {
         render(<Loader loading={false}/>);
         expect(screen.queryByText('Loading...')).toBeFalsy();
     });
@@ -27,6 +27,12 @@ describe('Loader label test', () => {
     test('Loader shouldn\'t present label from property when given one and not loading', () => {
         render(<Loader loading={false} label={'label'}/>);
         expect(screen.queryByText('label...')).toBeFalsy();
+    });
+
+    test('Default label should be replaced if given another one', () => {
+        render(<Loader loading={false} label={'label'}/>);
+        expect(screen.getByText('label...')).toBeTruthy();
+        expect(screen.queryByText('Loading...')).toBeFalsy();
     });
 
 });
