@@ -30,7 +30,7 @@ describe('Loader label test', () => {
     });
 
     test('Default label should be replaced if given another one', () => {
-        render(<Loader loading={false} label={'label'}/>);
+        render(<Loader loading={true} label={'label'}/>);
         expect(screen.getByText('label...')).toBeTruthy();
         expect(screen.queryByText('Loading...')).toBeFalsy();
     });
